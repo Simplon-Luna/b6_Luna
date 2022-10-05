@@ -61,6 +61,17 @@ Création et gestion des tâches dans l'ordre du plan d'action. Attribution des 
 
 # **Commandes utilisées**
 
+
+### list services
+kubectl get service 
+
+### list pods
+kubectl get pods
+
+### describe running and failed pod
+kubectl describe pods [name]
+
+
 ### Create AKS Cluster
 
 az aks create -g b6luna -n AKSClusterLuna --enable-managed-identity --node-count 2 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
