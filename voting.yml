@@ -15,7 +15,7 @@ spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: Redis
+      - name: redis
         image: redis:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
@@ -54,7 +54,6 @@ spec:
     metadata:
       labels:
         app: votingapp-azure
-      STRESS_SECS: 2
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
@@ -72,7 +71,9 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "Redis"
+          value: "redis"
+        - name: STRESS_SECS
+          value: "2"
 ---
 apiVersion: v1
 kind: Service
