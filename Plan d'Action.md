@@ -76,3 +76,7 @@ voting.yml
 
 kubectl apply -f voting.yaml
 
+### Determine the networking service type
+
+kubectl get service votingapp-azure --watch
+
