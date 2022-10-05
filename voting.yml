@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: az-redis
+  name: redis-azure
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: redis-azure
+      - name: redis
         image: redis:latest
         env:
         - name: ALLOW_EMPTY_PASSWORD
@@ -74,7 +74,7 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "redis-azure"
+          value: "redis"
         - name: STRESS_SECS
           value: "2"
 ---
