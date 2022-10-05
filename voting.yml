@@ -72,7 +72,7 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "az-redis"
+          value: "redis-service"
         - name: STRESS_SECS
           value: "2"
 ---
