@@ -74,7 +74,7 @@ az aks get-credentials --resource-group b6luna --name AKSClusterLuna
 
 voting.yml
 
-kubectl apply -f voting.yaml
+kubectl apply -f voting.yml
 
 ### Determine the networking service type
 
