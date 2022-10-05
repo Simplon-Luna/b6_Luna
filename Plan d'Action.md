@@ -73,3 +73,6 @@ az aks get-credentials --resource-group b6luna --name AKSClusterLuna
 [link](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli#code-try-7)
 
 voting.yml
+
+kubectl apply -f voting.yaml
+
