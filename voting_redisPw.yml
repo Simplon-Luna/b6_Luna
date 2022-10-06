@@ -20,8 +20,6 @@ spec:
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
-        - name: MASTER
-          value: "true"
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
@@ -86,7 +84,7 @@ spec:
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
-              name: redisdb_pass
+              name: reddb-pass
               key: password_redis_154
         
 ---
