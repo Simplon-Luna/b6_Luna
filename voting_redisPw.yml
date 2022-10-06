@@ -99,11 +99,3 @@ spec:
   - port: 80
   selector:
     app: votingapp-azure
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: redisdb_pass
-type: Opaque
-data:
-  password: password_redis_154
