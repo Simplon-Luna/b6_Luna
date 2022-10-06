@@ -85,11 +85,6 @@ spec:
           value: "2"
         - name: REDIS_PWD
           value: "$(REDIS_PWD)"
-        - name: REDIS_PWD
-          valueFrom:
-            secretKeyRef:
-              name: reddb-pass
-              key: REDIS_PWD
         
 ---
 # App Service (LB)
