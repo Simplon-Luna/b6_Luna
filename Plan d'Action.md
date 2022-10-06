@@ -92,5 +92,6 @@ kubectl apply -f voting.yml
 kubectl get service votingapp-azure --watch
 
 ### Create KT auth & pwd secret
-kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+kubectl create secret generic reddb-pass --from-file=./username.txt --from-file=./password.txt
 
+kubectl create secret generic reddb-pass --from-literal=username=devuser --from-literal=password=password_redis_154

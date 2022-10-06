@@ -19,12 +19,12 @@ spec:
         args: ["--requirepass", "$(REDIS_PWD)"]
         env:
         - name: ALLOW_EMPTY_PASSWORD
-          value: "no"
+          value: "no" 
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
               name: reddb-pass
-              key: password_redis_154
+              key: password
         resources:
           requests:
             cpu: 100m
@@ -85,7 +85,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: reddb-pass
-              key: password_redis_154
+              key: password
         
 ---
 # App Service (LB)
