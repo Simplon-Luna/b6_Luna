@@ -20,11 +20,13 @@ spec:
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
+        - name: MASTER
+          value: "true"
         - name: REDIS_PASS
           valueFrom:
             secretKeyRef:
               name: redis
-              key: password_redis
+              key: password_redis_154
         resources:
           requests:
             cpu: 100m
