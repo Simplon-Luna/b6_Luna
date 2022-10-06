@@ -14,3 +14,12 @@ Début du brief et déjà quelques problèmes de promo avec scrum VS pas-scrum. 
 Mise en place du plan d'action et du DAT provisoire qui sera utile pour le rendu et la compréhension.
 
 Creation RG, AKS Cluster & yml for voting node
+
+
+### 22-10-06
+Hier, mise en place du .yml jusqu'à 3.5 du brief. Azure a continuer de faire de la m# mais hier soir avec le même code, ça a fonctionné.
+
+Ce matin, rencontre avec les tuteurs, ça c'est bien passé, j'ai hâte même si stressée.
+
+Prévue pour l'après-midi, faire la partie 4 du brief, Redis password.
+
