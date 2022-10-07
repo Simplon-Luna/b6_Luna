@@ -1,0 +1,131 @@
+#Redis Deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: az-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-azure
+  template:
+    metadata:
+      labels:
+        app: redis-azure
+    spec:
+      containers:
+      - name: redis
+        image: redis:latest
+        args: ["--requirepass", "$(REDIS_PWD)"]
+        env:
+        - name: ALLOW_EMPTY_PASSWORD
+          value: "no"
+        - name: REDIS_PWD
+          valueFrom:
+            secretKeyRef:
+              name: reddb-pass
+              key: password
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 6379
+          name: redis
+---
+# Redis Service (ClusterIP)
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+spec: # default type is ClusterIP, there is no reason to specify  type: ClusterIP
+  ports:
+  - port: 6379
+  selector:
+    app: redis-azure
+---
+# Vote App Deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alfred-voteapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: votingapp-azure
+  template:
+    metadata:
+      labels:
+        app: votingapp-azure
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: alfred-voting
+        image: whujin11e/public:azure_voting_app
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: REDIS
+          value: "redis-service"
+        - name: STRESS_SECS
+          value: "2"
+        - name: REDIS_PWD
+          valueFrom:
+            secretKeyRef:
+              name: reddb-pass
+              key: password
+        
+---
+# App Service (LB)
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: votingapp-azure
+---
+# Persistent Storage Create
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: red-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+---
+# PV claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: red-pv-claim
+spec:
+  storageClassName: azurefile-csi
+  volumename: azurefile
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
