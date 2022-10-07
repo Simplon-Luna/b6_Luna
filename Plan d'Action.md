@@ -95,3 +95,11 @@ kubectl get service votingapp-azure --watch
 kubectl create secret generic reddb-pass --from-file=./username.txt --from-file=./password.txt
 
 kubectl create secret generic reddb-pass --from-literal=username=devuser --from-literal=password=password_redis_154
+
+## Volumes
+
+links :
+
+[Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+[Configure PV](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/)
+[Multiple Nodes](https://stackoverflow.com/questions/54845025/does-kubernetes-support-persistent-volumes-shared-between-multiple-nodes-in-a-cl)
