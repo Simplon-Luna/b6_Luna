@@ -23,3 +23,7 @@ Ce matin, rencontre avec les tuteurs, ça c'est bien passé, j'ai hâte même si
 
 Prévue pour l'après-midi, faire la partie 4 du brief, Redis password.
 
+### 22-10-07
+Hier, prise de tête avec l'assignement du kube-secret a Redis et a Vote.
+
+Aujourd'hui, mise en place de la résolution de ce problème et progrès vers la partie finale de la partie 1.
