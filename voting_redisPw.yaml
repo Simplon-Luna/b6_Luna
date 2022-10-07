@@ -20,11 +20,6 @@ spec:
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
-        - name: REDIS_USR
-          valueFrom:
-            secretKeyRef:
-              name: reddb-pass
-              key: username
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
@@ -86,11 +81,6 @@ spec:
           value: "redis-service"
         - name: STRESS_SECS
           value: "2"
-        - name: REDIS_USR
-          valueFrom:
-            secretKeyRef:
-              name: reddb-pass
-              key: username
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
