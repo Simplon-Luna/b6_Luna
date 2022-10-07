@@ -22,9 +22,9 @@ spec:
           value: "no"
         - name: REDIS_USR
           valueFrom:
-          secretKeyRef:
-            name: reddb-pass
-            key: username
+            secretKeyRef:
+              name: reddb-pass
+              key: username
         - name: REDIS_PWD
           valueFrom:
             secretKeyRef:
