@@ -100,6 +100,11 @@ kubectl create secret generic reddb-pass --from-literal=username=devuser --from-
 
 links :
 
-[Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-[Configure PV](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/)
 [Multiple Nodes](https://stackoverflow.com/questions/54845025/does-kubernetes-support-persistent-volumes-shared-between-multiple-nodes-in-a-cl)
+[AKS Multiple Nodes](https://learn.microsoft.com/fr-fr/azure/aks/azure-files-volume)
+[AKS Storage](https://learn.microsoft.com/en-us/azure/aks/concepts-storage)
+[AKS Storage Driver](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers)
+[AKS Azure file claim](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume#mount-file-share-as-an-persistent-volume)
+
+#### Create KT secret for access to file share
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=b6lstorageacc --from-literal=azurestorageaccountkey=JBsbcnoq7ufOg+DJ45B6KN4YNow8GkHhjQHaJfyzn5DyVW9eU0mDfWTpUqMCEKDPWc0HZRyesp5s+AStmP212A==

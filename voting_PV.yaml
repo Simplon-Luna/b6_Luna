@@ -100,27 +100,32 @@ spec:
   selector:
     app: votingapp-azure
 ---
-# Persistent Storage Create
-apiVersion: v1
-kind: PersistentVolume
+# Storage Class creation
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
 metadata:
-  name: red-pv
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: "/mnt/data"
+  label: red-sc
+  name: red-sc
+provisioner: file.csi.azure.com
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+mountOptions:
+  - dir_mode=0640
+  - file_mode=0640
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict # https://linux.die.net/man/8/mount.cifs
+  - nosharesock
+parameters:
+  skuName: Standard_LRS
 ---
-# PV claim
+# PV Claim
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: red-pv-claim
+  name: red-pvc
 spec:
   storageClassName: azurefile-csi
   volumename: azurefile
@@ -129,3 +134,21 @@ spec:
   resources:
     requests:
       storage: 3Gi
+---
+#**# # Persistent Storage Create
+#**# apiVersion: v1
+#**# kind: PersistentVolume
+#**# metadata:
+#**#   name: red-pv
+#**#   labels:
+#**#     type: local
+#**# spec:
+#**#   storageClassName: manual
+#**#   capacity:
+#**#     storage: 10Gi
+#**#   accessModes:
+#**#     - ReadWriteMany
+#**#   hostPath:
+#**#     path: "/mnt/data"
+
+
