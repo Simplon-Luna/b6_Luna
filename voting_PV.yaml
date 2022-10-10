@@ -13,6 +13,10 @@ spec:
       labels:
         app: redis-azure
     spec:
+#      volumes:
+#      - name: red-vol
+#        persistentVolumeClaim:
+#          claimName: red-pvc
       containers:
       - name: redis
         image: redis:latest
