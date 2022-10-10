@@ -13,10 +13,10 @@ spec:
       labels:
         app: redis-azure
     spec:
-#      volumes:
-#      - name: red-vol
-#        persistentVolumeClaim:
-#          claimName: red-pvc
+      volumes:
+      - name: red-vol
+        persistentVolumeClaim:
+          claimName: red-pvc
       containers:
       - name: redis
         image: redis:latest
@@ -103,19 +103,37 @@ spec:
   selector:
     app: votingapp-azure
 ---
-# PV Claim
+#PV creation
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: red-pvc
+  name: red-pv
 spec:
-  storageClassName: azurefile-csi
-  volumeName: azurefile
+  capacity:
+    storage: 5Gi
   accessModes:
     - ReadWriteMany
-  resources:
-    requests:
-      storage: 3Gi
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: azurefile-csi
+  csi:
+    driver: file.csi.azure.com
+    readOnly: false
+    volumeHandle: unique-volumeid  # make sure this volumeid is unique in the cluster
+    volumeAttributes:
+      resourceGroup: b6luna  # optional, only set this when storage account is not in the same resource group as agent node
+      shareName: red-pvshare
+    nodeStageSecretRef:
+      name: reddb-pass
+      namespace: default
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=0
+    - gid=0
+    - mfsymlinks
+    - cache=strict
+    - nosharesock
+    - nobrl
 ---
 # Storage Class creation
 kind: StorageClass
@@ -136,3 +154,19 @@ mountOptions:
   - nosharesock
 parameters:
   skuName: Standard_LRS
+---
+# PV Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: red-pvc
+spec:
+  storageClassName: azurefile-csi
+  volumeName: red-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+---
+

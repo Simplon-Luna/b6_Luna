@@ -105,6 +105,8 @@ links :
 [AKS Storage](https://learn.microsoft.com/en-us/azure/aks/concepts-storage)
 [AKS Storage Driver](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers)
 [AKS Azure file claim](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume#mount-file-share-as-an-persistent-volume)
+[Create PV](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume)
 
 #### Create KT secret for access to file share
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=b6lstorageacc --from-literal=azurestorageaccountkey=JBsbcnoq7ufOg+DJ45B6KN4YNow8GkHhjQHaJfyzn5DyVW9eU0mDfWTpUqMCEKDPWc0HZRyesp5s+AStmP212A==
+
