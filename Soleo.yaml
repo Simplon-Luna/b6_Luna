@@ -32,7 +32,7 @@ spec:
         - name: REDIS_USR
           valueFrom:
             secretKeyRef:
-              name: redis-credentials
+              name: reddb-pass
               key: username
         - name: REDIS_PWD
           valueFrom:
@@ -91,7 +91,7 @@ spec:
           - name: REDIS_PWD
             valueFrom:
               secretKeyRef:
-                name: redis-credentials
+                name: reddb-pass
                 key: password
 ---
 apiVersion: v1
