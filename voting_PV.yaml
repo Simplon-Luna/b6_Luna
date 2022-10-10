@@ -132,7 +132,7 @@ metadata:
   name: red-pvc
 spec:
   storageClassName: azurefile-csi
-  volumename: azurefile
+  volumeName: azurefile
   accessModes:
     - ReadWriteMany
   resources:
