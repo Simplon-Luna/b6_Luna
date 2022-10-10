@@ -27,3 +27,8 @@ Prévue pour l'après-midi, faire la partie 4 du brief, Redis password.
 Hier, prise de tête avec l'assignement du kube-secret a Redis et a Vote.
 
 Aujourd'hui, mise en place de la résolution de ce problème et progrès vers la partie finale de la partie 1.
+
+### 22-10-10
+Vendredi, j'ai résolue le problème des secrets et aidée mes collègues avec le même problème et je me suis penchée fortement sur la création et le claim de volume persistant via KT.
+
+Aujourd'hui, continuation et fin prévue du claim de volume persistant et tentative de fin de brief 6 Partie 1.
