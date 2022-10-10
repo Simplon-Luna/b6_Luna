@@ -13,6 +13,12 @@ spec:
       labels:
         app: redis-azure
     spec:
+      volumes:
+      - name: red-vol
+        persistentVolumeClaim:
+          claimName: red-pvc
+      hostname: busybox-1
+      subdomain: azb-clusterip
       containers:
       - name: redis
         image: redis:latest
@@ -85,8 +91,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: reddb-pass
-              key: password
-        
+              key: password      
 ---
 # App Service (LB)
 apiVersion: v1
@@ -104,7 +109,6 @@ spec:
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  label: red-sc
   name: red-sc
 provisioner: file.csi.azure.com
 reclaimPolicy: Retain
@@ -135,20 +139,6 @@ spec:
     requests:
       storage: 3Gi
 ---
-#**# # Persistent Storage Create
-#**# apiVersion: v1
-#**# kind: PersistentVolume
-#**# metadata:
-#**#   name: red-pv
-#**#   labels:
-#**#     type: local
-#**# spec:
-#**#   storageClassName: manual
-#**#   capacity:
-#**#     storage: 10Gi
-#**#   accessModes:
-#**#     - ReadWriteMany
-#**#   hostPath:
-#**#     path: "/mnt/data"
+
 
 
