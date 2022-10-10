@@ -30,8 +30,8 @@ spec:
               name: reddb-pass
               key: password
         volumeMounts:
-          - name: red-pv
-            mountPath: /data
+        - name: red-pv
+          mountPath: /data
         resources:
           requests:
             cpu: 100m
