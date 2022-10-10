@@ -3,8 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: az-redis
-  labels:
-    app: redis
 spec:
   replicas: 1
   selector:
@@ -15,10 +13,6 @@ spec:
       labels:
         app: redis-azure
     spec:
-      volumes:
-      - name: red-vol
-        persistentVolumeClaim:
-          claimName: red-pvc
       hostname: redis-host
       subdomain: redis-service
       containers:
