@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: az-redis
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: redis-azure
@@ -60,7 +60,7 @@ kind: Deployment
 metadata:
   name: alfred-voteapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: votingapp-azure
