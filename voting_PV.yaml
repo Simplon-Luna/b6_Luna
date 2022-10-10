@@ -13,12 +13,6 @@ spec:
       labels:
         app: redis-azure
     spec:
-#      volumes:
-#      - name: red-vol
-#        persistentVolumeClaim:
-#          claimName: red-pvc
-      hostname: redis-host
-      subdomain: redis-service
       containers:
       - name: redis
         image: redis:latest
