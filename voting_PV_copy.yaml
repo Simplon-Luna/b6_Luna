@@ -18,7 +18,6 @@ spec:
         azureFile:
           secretName: azure-secret
           shareName: b6l-red-fileshare
-          readOnly: false
       containers:
       - name: redis
         image: redis:latest
