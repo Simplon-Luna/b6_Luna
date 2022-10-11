@@ -27,7 +27,7 @@ spec:
         args: ["--requirepass", "$(REDIS_PWD)"]
         volumeMounts:
         - name: red-vol
-          mountPath: /mnt/red-pv
+          mountPath: /data
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
@@ -130,7 +130,7 @@ spec:
       resourceGroup: b6luna  # optional, only set this when storage account is not in the same resource group as agent node
       shareName: b6l-red-fileshare
     nodeStageSecretRef:
-      name: reddb-pass
+      name: azure-secret
       namespace: default
   mountOptions:
     - dir_mode=0777
