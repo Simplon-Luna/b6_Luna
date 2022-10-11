@@ -27,7 +27,7 @@ spec:
         args: ["--requirepass", "$(REDIS_PWD)"]
         volumeMounts:
         - name: red-vol
-          mountPath: /mnt/red-pv
+          mountPath: /data
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
