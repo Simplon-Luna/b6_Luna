@@ -37,3 +37,19 @@ Aujourd'hui, continuation et fin prévue du claim de volume persistant et tentat
 Hier j'ai tournée en rond à suivre des "solutions" d'autres qui n'en étaient pas...
 
 Aujourd'hui cours puis tentative de résolution des problèmes créés par les "solutions" puis avancement sur partie 2.
+
+### 22-10-12
+
+### 22-10-13
+
+### 22-10-14
+
+### 22-10-17
+
+### 22-10-18
+
+### 22-10-19
+
+### 22-10-20
+
+### 22-10-21
