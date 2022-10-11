@@ -23,6 +23,9 @@ spec:
       - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
+#        volumeMounts:
+#        - name: red-pv-fileshare
+#          mountPath: /b6l-red-fileshare
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
