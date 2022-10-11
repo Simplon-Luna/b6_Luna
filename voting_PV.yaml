@@ -29,9 +29,9 @@ spec:
             secretKeyRef:
               name: reddb-pass
               key: password
-        volumeMounts:
-        - name: red-pv
-          mountPath: /data
+#        volumeMounts:
+#        - name: red-pv
+#          mountPath: /data
         resources:
           requests:
             cpu: 100m
