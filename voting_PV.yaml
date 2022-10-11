@@ -15,8 +15,6 @@ spec:
     spec:
       volumes:
       - name: red-vol
-        persistentVolumeClaim:
-          claimName: red-pvc
         azureFile:
           secretName: azure-secret
           shareName: b6l-red-fileshare
