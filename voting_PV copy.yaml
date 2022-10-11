@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: az-redis
-spec:
   replicas: 1
   selector:
     matchLabels:
@@ -15,16 +14,19 @@ spec:
     spec:
       volumes:
       - name: red-vol
-        azureFile:
-          secretName: azure-secret
-          shareName: b6l-red-fileshare
+        csi:
+          driver: file.csi.azure.com
+          readOnly: false
+          volumeAttributes:
+            secretName: azure-secret  # required
+            shareName: b6l-red-fileshare  # required
       containers:
       - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
         volumeMounts:
-        - name: red-pv
-#          mountPath: /b6l-red-fileshare
+        - name: red-vol
+          mountPath: /mnt/red-pv
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
@@ -127,7 +129,7 @@ spec:
       resourceGroup: b6luna  # optional, only set this when storage account is not in the same resource group as agent node
       shareName: b6l-red-fileshare
     nodeStageSecretRef:
-      name: reddb-pass
+      name: azure-secret
       namespace: default
   mountOptions:
     - dir_mode=0777
@@ -173,4 +175,3 @@ spec:
     requests:
       storage: 3Gi
 ---
-
