@@ -15,16 +15,19 @@ spec:
     spec:
       volumes:
       - name: red-vol
-        azureFile:
-          secretName: azure-secret
-          shareName: b6l-red-fileshare
+        csi:
+          driver: file.csi.azure.com
+          readOnly: false
+          volumeAttributes:
+            secretName: azure-secret  # required
+            shareName: b6l-red-fileshare  # required
       containers:
       - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
         volumeMounts:
         - name: red-pv
-          mountPath: /b6l-red-fileshare
+          mountPath: /mnt/red-pv
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
