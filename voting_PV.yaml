@@ -13,19 +13,18 @@ spec:
       labels:
         app: redis-azure
     spec:
-#      volumes:
-#      - name: red-vol
-#        azureFile:
-#          secretName: azure-secret
-#          shareName: b6l-red-fileshare
-#          readOnly: false
+      volumes:
+      - name: red-vol
+        azureFile:
+          secretName: azure-secret
+          shareName: b6l-red-fileshare
       containers:
       - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
-#        volumeMounts:
-#        - name: red-pv-fileshare
-#          mountPath: /b6l-red-fileshare
+        volumeMounts:
+        - name: red-pv
+          mountPath: /b6l-red-fileshare
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
@@ -87,7 +86,7 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "redis-azure.redis-service"
+          value: "redis-service"
         - name: STRESS_SECS
           value: "2"
         - name: REDIS_PWD
@@ -174,4 +173,3 @@ spec:
     requests:
       storage: 3Gi
 ---
-
