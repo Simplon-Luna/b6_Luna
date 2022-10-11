@@ -30,7 +30,7 @@ spec:
               name: reddb-pass
               key: password
         volumeMounts:
-        - name: red-pvshare
+        - name: red-pv
           mountPath: /data
         resources:
           requests:
