@@ -32,3 +32,8 @@ Aujourd'hui, mise en place de la résolution de ce problème et progrès vers la
 Vendredi, j'ai résolue le problème des secrets et aidée mes collègues avec le même problème et je me suis penchée fortement sur la création et le claim de volume persistant via KT.
 
 Aujourd'hui, continuation et fin prévue du claim de volume persistant et tentative de fin de brief 6 Partie 1.
+
+### 22-10-11
+Hier j'ai tournée en rond à suivre des "solutions" d'autres qui n'en étaient pas...
+
+Aujourd'hui cours puis tentative de résolution des problèmes créés par les "solutions" puis avancement sur partie 2.
