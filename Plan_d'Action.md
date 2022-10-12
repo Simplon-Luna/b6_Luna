@@ -112,11 +112,14 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 ## Partie 2
 
 #### Creation Kluster avec ACR
-# set this to the name of your Azure Container Registry.  It must be globally unique
+##### set this to the name of your Azure Container Registry.  It must be globally unique
 MYACR=lunacr
 
-# Run the following line to create an Azure Container Registry if you do not already have one
+##### Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g b6luna --sku basic
 
-# Create an AKS cluster with ACR integration
+##### Create an AKS cluster with ACR integration
 az aks create -g b6luna -n KlusterLuna --enable-managed-identity --node-count 4 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys --attach-acr $MYACR
+
+### Connect to the cluster
+az aks get-credentials --resource-group b6luna --name KusterLuna
