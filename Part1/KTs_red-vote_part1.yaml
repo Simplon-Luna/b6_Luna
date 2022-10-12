@@ -13,10 +13,21 @@ spec:
       labels:
         app: redis-azure
     spec:
+      volumes:
+      - name: red-vol
+        csi:
+          driver: file.csi.azure.com
+          readOnly: false
+          volumeAttributes:
+            secretName: azure-secret  # required
+            shareName: b6l-red-fileshare  # required
       containers:
       - name: redis
         image: redis:latest
         args: ["--requirepass", "$(REDIS_PWD)"]
+        volumeMounts:
+        - name: red-vol
+          mountPath: /data
         env:
         - name: ALLOW_EMPTY_PASSWORD
           value: "no"
@@ -86,7 +97,6 @@ spec:
             secretKeyRef:
               name: reddb-pass
               key: password
-        
 ---
 # App Service (LB)
 apiVersion: v1
@@ -99,3 +109,50 @@ spec:
   - port: 80
   selector:
     app: votingapp-azure
+---
+#PV creation
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: red-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: azurefile-csi
+  csi:
+    driver: file.csi.azure.com
+    readOnly: false
+    volumeHandle: unique-volumeid  # make sure this volumeid is unique in the cluster
+    volumeAttributes:
+      resourceGroup: b6luna  # optional, only set this when storage account is not in the same resource group as agent node
+      shareName: b6l-red-fileshare
+    nodeStageSecretRef:
+      name: azure-secret
+      namespace: default
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=0
+    - gid=0
+    - mfsymlinks
+    - cache=strict
+    - nosharesock
+    - nobrl
+---
+# PV Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: red-pvc
+spec:
+  storageClassName: azurefile-csi
+  volumeName: red-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+---

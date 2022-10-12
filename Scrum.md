@@ -39,6 +39,9 @@ Hier j'ai tournée en rond à suivre des "solutions" d'autres qui n'en étaient 
 Aujourd'hui cours puis tentative de résolution des problèmes créés par les "solutions" puis avancement sur partie 2.
 
 ### 22-10-12
+Hier, nous avons découverts que nous avions raison depuis 3 jours et que donc le "problème" n'existait tout simplement pas... Nous avons aussi terminé la partie 1 du brief 6.
+
+Aujourd'hui, attaque de la partie 2 avec pas mal de retard du coup... Mais attaque avec les bonus en tête.
 
 ### 22-10-13
 
