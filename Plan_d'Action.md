@@ -1,6 +1,6 @@
 # Plan d'action présentation  
 
-# Plan d'action
+## Plan d'action
 
 00. **Scrum quotidien**
 Réflexion personnelle quotidiennes avec compte-rendu immédiat et désignation des premières tâches du jour.
@@ -55,10 +55,9 @@ flowchart LR
     class Web, blanc;
 
 ```
+## Partie 1
 
-0.   **Liste tâches à faire sur le [Board](https://github.com/users/Simplon-Luna/projects/1/views/1)**
-Création et gestion des tâches dans l'ordre du plan d'action. Attribution des tâches aux membres du groupe au fur et à mesure.
-
+SubcriptionID: a1f74e2d-ec58-4f9a-a112-088e3469febb
 # **Commandes utilisées**
 
 
@@ -110,3 +109,14 @@ links :
 #### Create KT secret for access to file share
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=b6lstorageacc --from-literal=azurestorageaccountkey=JBsbcnoq7ufOg+DJ45B6KN4YNow8GkHhjQHaJfyzn5DyVW9eU0mDfWTpUqMCEKDPWc0HZRyesp5s+AStmP212A==
 
+## Partie 2
+
+#### Creation Kluster avec ACR
+# set this to the name of your Azure Container Registry.  It must be globally unique
+MYACR=lunacr
+
+# Run the following line to create an Azure Container Registry if you do not already have one
+az acr create -n $MYACR -g b6luna --sku basic
+
+# Create an AKS cluster with ACR integration
+az aks create -g b6luna -n KlusterLuna --enable-managed-identity --node-count 4 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys --attach-acr $MYACR
