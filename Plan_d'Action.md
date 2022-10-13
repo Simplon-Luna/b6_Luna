@@ -123,3 +123,22 @@ az aks create -g b6luna -n KlusterLuna --enable-managed-identity --node-count 4 
 
 ### Connect to the cluster
 az aks get-credentials --resource-group b6luna --name KusterLuna
+
+### Add Gandi webhook jetstack with helm
+
+[jetstack](https://github.com/bwolf/cert-manager-webhook-gandi)
+
+helm repo add jetstack https://charts.jetstack.io
+
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true --version v1.9.1 --set 'extraArgs={--dns01-recursive-nameservers=8.8.8.8:53\,1.1.1.1:53}'
+
+#### Gandi secret
+kubectl create secret generic gandi-credentials --namespace cert-manager --from-literal=api-token='2DqJpnKJljl9yWQIolq2xRXO'
+
+#### install cert-manager webhook for gandi
+helm install cert-manager-webhook-gandi --repo https://bwolf.github.io/cert-manager-webhook-gandi --version v0.2.0 --namespace cert-manager --set features.apiPriorityAndFairness=true  --set logLevel=6 --generate-name
+
+#### create secret role and bind for webhook
+kubectl create role access-secret --verb=get,list,watch,update,create --resource=secrets
+
+kubectl create rolebinding --role=access-secret default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665664967
