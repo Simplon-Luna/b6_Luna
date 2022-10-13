@@ -10,8 +10,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - hosts: kitty.simplon-ely.space
-  - http:
+  - host: kitty.simplon-ely.space
+    http:
       paths:
       - path: /
         pathType: Prefix
