@@ -4,7 +4,7 @@ metadata:
   name: votingapp
   annotations:
     validate.nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/issuer: letsencrypt-staging
+    cert-manager.io/issuer: letsencrypt
     cert-manager.io/issuer-kind: Issuer
     cert-manager.io/issuer-group: cert-manager.io
 spec:
