@@ -11,9 +11,10 @@ spec:
   ingressClassName: nginx
   rules:
 #  - host: vote.simplon-ely.space
-    http:
+  - http:
       paths:
-      - pathType: Prefix
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: vote-service
