@@ -22,4 +22,4 @@ spec:
   tls: # placing a host in the TLS config will determine what ends up in the cert's subjectAlt
   - host:
     - vote.simplon-ely.space
-    secretname: secret-tls # cert-manager will store the created certificate in this secret.
+    secretName: secret-tls # cert-manager will store the created certificate in this secret.
