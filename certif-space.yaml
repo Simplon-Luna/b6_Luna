@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: certificate
 metadata:
-  name:  vote.simplon-ely.space
+  name:  kitty.simplon-ely.space
 spec:
   dnsNames:
-  - vote.simplon-ely.space
+  - kitty.simplon-ely.space
   issuerRef:
     name: letsencrypt
     kind: Issuer
