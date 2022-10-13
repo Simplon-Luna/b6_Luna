@@ -44,6 +44,9 @@ Hier, nous avons découverts que nous avions raison depuis 3 jours et que donc l
 Aujourd'hui, attaque de la partie 2 avec pas mal de retard du coup... Mais attaque avec les bonus en tête.
 
 ### 22-10-13
+Hier, j'ai terminé le montage du disque et travaillée sur le partie 2. Ingress est mis en place, reste à configurer.
+
+Ce matin, continuation du cours de K8s puis continuation du travail d'hier avec focus sur le FQDN K8s et la configuration nom de domaine du dns interne pour la redirection ingress.
 
 ### 22-10-14
 
