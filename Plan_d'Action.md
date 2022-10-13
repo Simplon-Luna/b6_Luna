@@ -142,3 +142,6 @@ helm install cert-manager-webhook-gandi --repo https://bwolf.github.io/cert-mana
 kubectl create role access-secret --verb=get,list,watch,update,create --resource=secrets
 
 kubectl create rolebinding --role=access-secret default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665664967
+
+Apply ingress -> issuer -> certificate
+
