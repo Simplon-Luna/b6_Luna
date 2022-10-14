@@ -49,6 +49,9 @@ Hier, j'ai terminé le montage du disque et travaillée sur le partie 2. Ingress
 Ce matin, continuation du cours de K8s puis continuation du travail d'hier avec focus sur le FQDN K8s et la configuration nom de domaine du dns interne pour la redirection ingress.
 
 ### 22-10-14
+Hier, nous avons fait les chapitre 5 à 8 avec l'aide de Nomad, MERCI NOMAD !!
+
+Aujourd'hui, réunion avec Nadjima et mise en place du scaling.
 
 ### 22-10-17
 
