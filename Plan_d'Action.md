@@ -149,4 +149,8 @@ Apply ingress -> issuer -> certificate
 
 az aks update --resource-group b6luna --name KlusterLuna --enable-cluster-autoscaler --min-count 1 --max-count 8
 
-#### 
+#### Autoscaling
+
+[Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+[Autoscaling Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+
