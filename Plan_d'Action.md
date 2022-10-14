@@ -122,7 +122,7 @@ az acr create -n $MYACR -g b6luna --sku basic
 az aks create -g b6luna -n KlusterLuna --enable-managed-identity --node-count 4 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys --attach-acr $MYACR
 
 ### Connect to the cluster
-az aks get-credentials --resource-group b6luna --name KusterLuna
+az aks get-credentials --resource-group b6luna --name KlusterLuna
 
 ### Add Gandi webhook jetstack with helm
 
@@ -145,3 +145,8 @@ kubectl create rolebinding --role=access-secret default-to-secrets --serviceacco
 
 Apply ingress -> issuer -> certificate
 
+#### update AKS with autoscale
+
+az aks update --resource-group b6luna --name KlusterLuna --enable-cluster-autoscaler --min-count 1 --max-count 8
+
+#### 
