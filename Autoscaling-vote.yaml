@@ -19,7 +19,7 @@ spec:
         averageUtilization: 70
 status:
   observedGeneration: 1
-  lastScaleTime: <some-time>
+  lastScaleTime: 60s
   currentReplicas: 1
   desiredReplicas: 1
   currentMetrics:
