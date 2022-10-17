@@ -8,7 +8,7 @@
 #### [02 - Architecture Topology](#Topology)
 #### [03 - Resource List](#Resources)
 #### [04 - AKS cluster deployment with 2 nodes](#ClusterAKS)
-#### [05 - Redis Deployment](#Redis)
+#### [05 - Redis & Vote App Deployment](#Redis)
 #### [06 - Load Balancer Deployment](#LB)
 #### [07 - ClusterIP application for Redis](#ClusterIP)
 #### [08 - Redis password setting](#MDP)
