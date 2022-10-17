@@ -168,7 +168,9 @@ We used the tutorial above and the images to deploy Redis and the Voting App alo
 
 [Redis & Voting along with their dedicated services](https://github.com/Simplon-Luna/b6_Luna/blob/main/Part1/Red-Vote.yaml)
 
+```bash
 kubectl apply -f Red-Vote.yaml
+```
 
 [&#8679;](#home)
 
@@ -232,6 +234,8 @@ kubectl create secret generic reddb-pass --from-literal=username=[USERNAME] --fr
 ### **Creation of Azure Storage Account**
 
 We used Azure Portal to create Azure Storage Account and File Share.
+
+[Azure Portal](https://portal.azure.com/#home)
 
 [&#8679;](#home)
 
