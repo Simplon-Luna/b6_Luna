@@ -9,51 +9,53 @@ ou
 
 
 ### 22-10-05
-Début du brief et déjà quelques problèmes de promo avec scrum VS pas-scrum. Ici ce sera scrum.
+Start of the brief and already some issues in the groups for "scrum" VS "no-scrum". Here, it'll be "scrum".
 
-Mise en place du plan d'action et du DAT provisoire qui sera utile pour le rendu et la compréhension.
+Set in place of an Action Plan and temporary DAT that will be useful for the project delivery and comprehension.
 
-Creation RG, AKS Cluster & yml for voting node
-
+RG, AKS Cluster & yaml for voting node creations
 
 ### 22-10-06
-Hier, mise en place du .yml jusqu'à 3.5 du brief. Azure a continuer de faire de la m# mais hier soir avec le même code, ça a fonctionné.
+Yesterday, creation and addressing of .yaml all the way to Chapter 3.5 of the brief. Azure continues to do a lot of issues but yesterday evening, with same code, it worked.
 
-Ce matin, rencontre avec les tuteurs, ça c'est bien passé, j'ai hâte même si stressée.
+This morning, meeting with internship tutors, it went well, quite stressed but excited to move on.
 
-Prévue pour l'après-midi, faire la partie 4 du brief, Redis password.
+Planned for the afternoon, checking resilience of yesterday's code and moving on to Chapter 4, Redis password.
 
 ### 22-10-07
-Hier, prise de tête avec l'assignement du kube-secret a Redis et a Vote.
+Yesterday came with issues about assignment of kube-secret to Redis and Vote App.
 
-Aujourd'hui, mise en place de la résolution de ce problème et progrès vers la partie finale de la partie 1.
+Today, applying the solution found yesterday about it and progress to end of Part 1.
 
 ### 22-10-10
-Vendredi, j'ai résolue le problème des secrets et aidée mes collègues avec le même problème et je me suis penchée fortement sur la création et le claim de volume persistant via KT.
+Friday, I solved the secrets issue, helped my coworkers which had the same issue and worked hard on creation and claim of persistant volume via KT.
 
-Aujourd'hui, continuation et fin prévue du claim de volume persistant et tentative de fin de brief 6 Partie 1.
+Today, continuation and planned ending of PVC and attempt to finish Part 1.
 
 ### 22-10-11
-Hier j'ai tournée en rond à suivre des "solutions" d'autres qui n'en étaient pas...
+Yesterday, turned round and round trying to follow "solutions" from others which weren't solutions at all...
 
-Aujourd'hui cours puis tentative de résolution des problèmes créés par les "solutions" puis avancement sur partie 2.
+Today, lesson then attempting of resolution of propblems created by the above mentionned "solutions", then hopefully moving on to part 2.
 
 ### 22-10-12
-Hier, nous avons découverts que nous avions raison depuis 3 jours et que donc le "problème" n'existait tout simplement pas... Nous avons aussi terminé la partie 1 du brief 6.
+Yesterday, we found out that Dunvael and I were right for 3 days and that the "problem" simply didn't exist, that it was normal behavior of the app... We also finally finished part 1 of Brief 6.
 
-Aujourd'hui, attaque de la partie 2 avec pas mal de retard du coup... Mais attaque avec les bonus en tête.
+TOday, tackling of part 2 while being a lot behind from the schedule... But tackling with boni in mind to get back some precious time and experience!
 
 ### 22-10-13
-Hier, j'ai terminé le montage du disque et travaillée sur le partie 2. Ingress est mis en place, reste à configurer.
+Yesterday, finished mounting of disk and worked on part 2. Ingress is already set in place but requires some configuration.
 
-Ce matin, continuation du cours de K8s puis continuation du travail d'hier avec focus sur le FQDN K8s et la configuration nom de domaine du dns interne pour la redirection ingress.
+This morning, continuation of K8s' lessons then resuming of yesterday's work with focus on K8s FQDN and configuration of domain name in DNSs (intern and external) for proper ingress redirection and rerouting.
 
 ### 22-10-14
-Hier, nous avons fait les chapitre 5 à 8 avec l'aide de Nomad, MERCI NOMAD !!
+Yesterday, finished chapter 5 to 8 with Nomad's help. THANKS NOMAD !!
 
-Aujourd'hui, réunion avec Nadjima et mise en place du scaling.
+Today, Nadjima's meeting and setting of scaling rules.
 
 ### 22-10-17
+Friday, Nadjima's meeting and helping coworkers took a lot of time but I managed to handle the scaling effectively in half an hour then helped Dunvael, Yuta, Noa and Paul with their issues. Then worked on the doc in collaboration with Dunvael.
+
+This morning, starting up helping out Nicolas and then Yuta for a few hours, with alongside Nomad for Yuta. Working on doc planned but a lot to tackle.
 
 ### 22-10-18
 
