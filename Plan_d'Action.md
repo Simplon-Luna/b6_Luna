@@ -359,7 +359,7 @@ Then apply .yaml as instructed:
 
 ### **Horizontal Auto-scaling of Voting App**
 
-For the Horizontal Auto-scaling of Voting App, I used these turotials:
+For the Horizontal Auto-scaling of Voting App, I used these tutorials:
 
 [Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 
