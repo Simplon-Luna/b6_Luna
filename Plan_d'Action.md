@@ -29,8 +29,9 @@
 # Plan d'action
 
 ### **Daily Scrum**
-Réflexion personnelle quotidiennes avec compte-rendu immédiat et désignation des premières tâches du jour.
-Réunions fréquente avec d'autres co-apprenants pour étudier des solutions aux problèmes rencontrés à plusieurs.
+Daily personnal reactions with reports and designations of first tasks for the day.
+
+Frequent meeting with other coworkers to study solutions to encountered problems together.
 
 [scrums](https://github.com/Simplon-Luna/b6_Luna/blob/main/Scrum.md)
 
@@ -331,9 +332,12 @@ For the cert-manager webhook to access it properly, we need a role and to bind t
 kubectl create role access-secret --verb=get,list,watch,update,create --resource=secrets
 ```
 
+kubectl create role [role-name] --verb=[Authorised-actions] --resource=[Authorised-resource]
+
 ```bash
 kubectl create rolebinding --role=access-secret default-to-secrets --serviceaccount=cert-manager:cert-manager-webhook-gandi-1665664967
 ```
+
 ![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/cert-manager_%26_roles.png)
 
 Then apply .yaml as instructed:
