@@ -21,7 +21,7 @@
 #### [15 - Horizontal Auto-scaling of Voting App](#Auto-scaling)
 #### [16 - Load testing](#Charge)
 #### [17 - Executive summary + Kubernetes functionnality](#Summary)
-#### [18 - Techincal Architecture Document of deployed infrastructure](#TAD)
+#### [18 - Technical Architecture Document of deployed infrastructure](#TAD)
 
 
 <div id='Scrum'/>
