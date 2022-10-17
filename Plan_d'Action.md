@@ -233,9 +233,7 @@ kubectl create secret generic reddb-pass --from-literal=username=[USERNAME] --fr
 
 ### **Creation of Azure Storage Account**
 
-We used Azure Portal to create Azure Storage Account and File Share.
-
-[Azure Portal](https://portal.azure.com/#home)
+We used [Azure Portal](https://portal.azure.com/#home) to create Azure Storage Account and File Share.
 
 [&#8679;](#home)
 
