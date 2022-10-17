@@ -1,87 +1,90 @@
-# Plan d'action présentation  
-
-## Plan d'action Brief 6 - Part 1  
+# Action Plan - *Brief 6*
 
 <div id='home'/>  
 
-## Sommaire
-#### [0 - Scrum quotidien](#Scrum)
-#### [1 - Lecture des documentations Kubernetes et AKS](#Documentations)
-#### [2 - Topologie de l'infrastructure](#Topologie)
-#### [3 - Liste ressources](#Ressources)
-#### [4 - Déploiement d'un cluster AKS avec deux nodes](#ClusterAKS)
-#### [5 - Déploiement de Redis](#Redis)
-#### [6 - Déploiement de Voting App](#VotingApp)
-#### [7 - Déploiement d’un Load Balancer](#LB)
-#### [8 - Application d'un ClusterIP pour Redis](#ClusterIP)
-#### [9 - Configuration d'un mot de passe pour le container Redis](#MDP)
-#### [10 - Création d'un secret Kubenetes](#Secret)
-#### [11 - Création d'un compte de stockage](#Stockage)
-#### [12 - Configuration d'un Persistent Volume et d'un P.V. Claim](#PVC)
-#### [13 - Création d'Ingress controller avec Kubernetes/nginx](#Ingress)
-#### [14 - Création d'un enregistrement DNS sur Gandi](#Gandi)
-#### [15 - Création d'un certificat TLS avec cert-manager pour la Voting App](#certificat)
-#### [16 - Auto-scaling horizontal de la Voting App](#Auto-scaling)
-#### [17 - Test de la montée en charge](#Charge)
-#### [18 - Executive summary + fonctionnement de Kubernetes](#Summary)
-#### [19 - Document d'Architecture Technique de l'infrastructure déployée](#DAT)
+## Summary
+#### [00 - Daily Scrum](#Scrum)
+#### [01 - K8s & AKS (powershell, Azure Cli & Bash) doc reading](#Doc)
+#### [02 - Architecture Topology](#Topology)
+#### [03 - Resource List](#Resources)
+#### [04 - AKS cluster deployment with 2 nodes](#ClusterAKS)
+#### [05 - Redis Deployment](#Redis)
+#### [06 - Load Balancer Deployment](#LB)
+#### [07 - ClusterIP application for Redis](#ClusterIP)
+#### [08 - Redis password setting](#MDP)
+#### [09 - Creation of Kubenetes secret](#Secret)
+#### [10 - Creation of Azure Storage Account](#Stockage)
+#### [11 - Setting of Persistent Volume & P.V.Claim](#PVC)
+#### [12 - Creation of Ingress Controller with Kubernetes Nginx](#Ingress)
+#### [13 - Creation of DNS registering on Gandi](#Gandi)
+#### [14 - Creation of TLS certificate with Cert-Manager for Voting App](#certificat)
+#### [15 - Horizontal Auto-scaling of Voting App](#Auto-scaling)
+#### [16 - Load testing](#Charge)
+#### [17 - Executive summary + Kubernetes functionnality](#Summary)
+#### [18 - Techincal Architecture Document of deployed infrastructure](#TAD)
 
 
 <div id='Scrum'/>
 
-## Plan d'action
+# Plan d'action
 
-00. **Scrum quotidien**
+### **Daily Scrum**
 Réflexion personnelle quotidiennes avec compte-rendu immédiat et désignation des premières tâches du jour.
 Réunions fréquente avec d'autres co-apprenants pour étudier des solutions aux problèmes rencontrés à plusieurs.
 
-[&#8679;](#top)  
+[scrums](https://github.com/Simplon-Luna/b6_Luna/blob/main/Scrum.md)
 
-<div id='Documentations'/>  
+[&#8679;](#home)
 
-01.  **Lecture des documentations Kubernetes et AKS**
-Lecture des documentations afin de déterminer les fonctionnements, prérequis et outils/logiciels nécessaires pour remplir les différentes tâches du Brief 6.
+<div id='Doc'/>
 
-[&#8679;](#top)  
+### **K8s & AKS (powershell, Azure Cli & Bash) doc reading**
+Reading of documentations to determine the functionnalitiez, prerequisites and different tools required to accomplish Brief 6.
 
-<div id='Topologie'/>  
+[&#8679;](#home)
 
-02.  **Topologie de l'infrastructure**
-Infrastructure Plannifiée
+<div id='Topologie'/>
 
-*Schéma réalisé dans le cas plus général où les pods ne sont pas dans le même node.*
-*Les pods sont schématisés par un seul objet même s'ils peuvent représenter plusieurs réplicas.*
+### **Infrastructure Topology**
+Planified Architecture
+
+*Schematic is made for the most generalize case where the pods aren't in the same node.*
+*Pods are schematized by a single item even if they can represent multiple replicas.*
 
 ```mermaid
 flowchart TD
 
 user(Utilisateurs)
-
+web{Internet}
     subgraph AZ [AZURE]
         
         subgraph Cluster [Cluster Kubernetes]
-            appGW(Load Balancer)
-            cluster(Cluster IP)
-            Nginx(Ingress)
+            appGW{{Load Balancer}}
+            cluster{{Cluster IP}}
+            Nginx[\Ingress/]
 
             subgraph n1 [Node 1]
-                KT-temp1(Redis)
+                KT-temp1[Kubelet]
+                redis([Redis])
+                KT-temp1 <--> redis
             end
 
             subgraph n2 [Node 2]
-                KT-temp2(Voting App)
+                KT-temp2[Kubelet]
+                vapp([Voting App])
+                KT-temp2 <--> vapp
             end
         end
 
         subgraph BDD [Stockage Redis]
-            Stock(Persistent Volume Claim)
+            Stock[(Persistent Volume Claim)]
         end
 
     end
 
 appGW --> KT-temp2
 KT-temp1 -.-> Stock
-user -.-> Nginx --> |Web| appGW
+user -.-> |web| web -.-> |web| Nginx --> |Web| appGW
 KT-temp1 <--> cluster <--> KT-temp2
 
     classDef rouge fill:#faa,stroke:#f66,stroke-width:3px,color:#002;
@@ -91,147 +94,160 @@ KT-temp1 <--> cluster <--> KT-temp2
     classDef fuschia fill:#f0f,stroke:#c0d,stroke-width:2px,color:#003;
     class BDD, fuschia;
     classDef vert fill:#ad5,stroke:#ad5,stroke-width:2px,color:#003;
-    class appGW,cluster, vert;
+    class appGW,cluster,Nginx, vert;
     classDef rose fill:#faf,stroke:#faf,stroke-width:2px,color:#003;
     class Stock, rose;
     classDef jaune fill:#fe5,stroke:#fe5,stroke-width:2px,color:#003,stroke-dasharray: 5 5;
     class user, jaune;
     classDef blanc fill:#eff,stroke:#eff,stroke-width:2px,color:#003;
-    class Nginx, blanc;
+    class web, blanc;
     classDef gris fill:#bab,stroke:#bab,stroke-width:2px,color:#003;
     class n1,n2, gris;
     classDef bleugris fill:#bbe,stroke:#bbe,stroke-width:2px,color:#003;
-    class KT-temp1,KT-temp2, bleugris;
+    class KT-temp1,KT-temp2,redis,vapp, bleugris;
 
 ```
 
-[&#8679;](#top)  
+[&#8679;](#home)
 
-<div id='Ressources'/>  
+<div id='Resources'/>
 
-03.  **Liste ressources**
+### **Resources List**
 
 -----------
 | Ressources | Cluster AKS | Redis |  Voting App |
 | :--------: | :--------: | :--------: | :--------: |
 | Azure service | ✓ | ✓ | ✓ |
-| ressource groupe | ✓ |✓ | ✓ |
-| SSH (port) | ✗ | 6379 | 80 |
-| CPU | ✗ | 100m-250m | 100m-250m |
-| Mémoire | ✗ | 128mi-256mi | 128mi-256mi |
-| Image | ✗ | redis:latest  | whujin11e/public:azure_voting_app |
-| Load Balancer | ✗ | ✓ puis ✗ | ✓ |
-| ClusterIP | ✗ | ✗ puis ✓ | ✗ |
+| resource groupe | ✓ |✓ | ✓ |
+| SSH (port) | N/A | 6379 | 80 |
+| CPU limit | N/A | 100m-250m | 100m-250m |
+| Mémoire limit | N/A | 128mi-256mi | 128mi-256mi |
+| Image | N/A | redis:latest  | whujin11e/public:azure_voting_app |
+| Load Balancer | N/A | ✓ puis ✗ | ✓ |
+| ClusterIP | N/A | ✗ puis ✓ | ✗ |
 | Kebernetes secret | ✓ | ✓ | ✓ |
 | Storage secret | ✓ | ✓ | ✓ |
-| Storage account (Standard LRS) | ✗ | ✓ | ✓ |
-| Persistent Volume | ✗ | ✓ | ✗ |
-| Persistent Vol. Claim (3Gi)| ✗ | ✓ | ✗ |
+| Storage account (Standard LRS) | N/A | ✓ | ✓ |
+| Persistent Volume | N/A | ✓ | ✗ |
+| Persistent Vol. Claim (3Gi)| N/A | ✓ | ✗ |
 | Ingress | ✓ | ✗ | ✓ |
 | Nginx| ✓ | ✗ | ✗ |
-| Certificat TLS | ✗ | ✗ | ✓ |
-| Auto-scaling | ✗ | ✗ | ✓ |
-
-[&#8679;](#top)  
-
-<div id='ClusterAKS'/>   
-
-04.    **Déploiement d'un cluster AKS avec deux nodes**
-
-[&#8679;](#top)  
-
-<div id='Redis'/>  
-
-05.    **Déploiement de Redis**
-
-[&#8679;](#top)  
-
-<div id='VotingApp'/>  
-
-06.    **Déploiement de Voting App**
-
-[&#8679;](#top)  
-
-<div id='LB'/>  
-
-07.    **Déploiement d’un Load Balancer**
-
-[&#8679;](#top)  
-
-<div id='ClusterIP'/>  
-   
-08.    **Application d'un ClusterIP pour Redis**
-
-[&#8679;](#top)  
-
-<div id='MDP'/>  
-
-09.    **Configuration d'un mot de passe pour le container Redis**
-
-[&#8679;](#top)  
-
-<div id='Secret'/>  
-
-10.    **Création d'un secret Kubenetes**
-
-[&#8679;](#top)  
-
-<div id='Stockage'/>  
-
-11.    **Création d'un compte de stockage**
-
-[&#8679;](#top)  
-
-<div id='PVC'/>  
-
-12.    **Configuration d'un Persistent Volume et d'un P.V. Claim**
-
-[&#8679;](#top)  
-
-<div id='Ingress'/> 
-
-13.    **Création d'Ingress controller avec Kubernetes/nginx**
-    
-[&#8679;](#top)
-
-<div id='Gandi'/> 
-
-14.    **Création d'un enregistrement DNS sur Gandi**
-
-[&#8679;](#top)
-
-<div id='Certificat'/> 
-
-15.    **Création d'un certificat TLS avec cert-manager pour la Voting App**
-
-[&#8679;](#top)
-
-<div id='Auto-scaling'/> 
-
-16.    **Auto-scaling horizontal de la Voting App**
-
-[&#8679;](#top)
-
-<div id='Charge'/> 
-
-17.    **Test de la montée en charge**
-
-[&#8679;](#top)
-
-<div id='Summary'/>  
-
-18.    **Executive summary + fonctionnement de Kubernetes**
-
-[&#8679;](#top)
-
-<div id='DAT'/> 
-
-19. **Document d'Architecture Technique de l'infrastructure déployée**
-
-[&#8679;](#top)
-## Partie 1
+| Certificat TLS | N/A | ✗ | ✓ |
+| Auto-scaling | ✗ | ✗ | ✓ (deployment) |
 
 SubcriptionID: a1f74e2d-ec58-4f9a-a112-088e3469febb
+
+[&#8679;](#home)
+
+<div id='ClusterAKS'/>
+
+### **AKS cluster deployment with 2 nodes**
+
+[***Tutorial***](https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?tabs=azure-cli)
+
+```bash
+az aks create -g b6luna -n AKSClusterLuna --enable-managed-identity --node-count 2 --enable-addons monitoring --enable-msi-auth-for-monitoring  --generate-ssh-keys
+```
+
+##### Connect to the cluster
+
+```bash
+az aks get-credentials --resource-group b6luna --name AKSClusterLuna
+```
+
+[&#8679;](#home)
+
+<div id='Redis'/>
+
+### **Redis & Voting App Deployment**
+
+[***Tutorial***](https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli#code-try-7)
+
+voting.yml
+
+kubectl apply -f voting.yml
+
+[&#8679;](#home)
+
+<div id='LB'/>
+
+### **Load Balancer Deployment**
+
+[&#8679;](#home)
+
+<div id='ClusterIP'/>
+   
+### **ClusterIP application for Redis**
+
+[&#8679;](#home)
+
+<div id='MDP'/>
+
+### **Redis password setting**
+
+[&#8679;](#home)
+
+<div id='Secret'/>
+
+### **Creation of Kubenetes secret**
+
+[&#8679;](#home)
+
+<div id='Stockage'/>
+
+### **Creation of Azure Storage Account**
+
+[&#8679;](#home)
+
+<div id='PVC'/>
+
+### **Setting of Persistent Volume & P.V.Claim**
+
+[&#8679;](#home)
+
+<div id='Ingress'/>
+
+### **Creation of Ingress Controller with Kubernetes Nginx**
+    
+[&#8679;](#home)
+
+<div id='Gandi'/>
+
+### **Creation of DNS registering on Gandi**
+
+[&#8679;](#home)
+
+<div id='Certificat'/>
+
+### **Creation of TLS certificate with Cert-Manager for Voting App**
+
+[&#8679;](#home)
+
+<div id='Auto-scaling'/>
+
+### **Horizontal Auto-scaling of Voting App**
+
+[&#8679;](#home)
+
+<div id='Charge'/>
+
+### **Load testing**
+
+[&#8679;](#home)
+
+<div id='Summary'/>
+
+### **Executive summary + Kubernetes functionnality**
+
+[&#8679;](#home)
+
+<div id='TAD'/>
+
+### **Techincal Architecture Document of deployed infrastructure**
+
+[&#8679;](#home)
+## Partie 1
+
 # **Commandes utilisées**
 
 
