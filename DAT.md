@@ -2,7 +2,7 @@
 ## Functions requirements
 Users needs to be able to vote and reset votes on the Voting App application and Voting App needs to be highly available.
 
-## Besoins non-fonctionnels
+## Non-functionnal Needs
 | Element | Value | Comments |
 | ------- | ------ | ------------ |
 | Provider | Azure | - Value and cost-effectiveness <br> - Compatibility <br> - Security |
@@ -14,7 +14,7 @@ Users needs to be able to vote and reset votes on the Voting App application and
 ## Function Schematic
 ![ ](https://github.com/Simplon-Luna/b6_Luna/blob/main/Pics/DAT%20Diagram%201.png)
 
-### Listes des environnements
+### Environment list
 | Nom | Type | Caractéristiques |
 | --- | ---- | ---------------- |
 | Azure | Provider | Public Cloud |
