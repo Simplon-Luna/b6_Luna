@@ -242,10 +242,15 @@ We used [Azure Portal](https://portal.azure.com/#home) to create Azure Storage A
 ### **Setting of Persistent Volume & P.V.Claim**
 
 [Multiple Nodes](https://stackoverflow.com/questions/54845025/does-kubernetes-support-persistent-volumes-shared-between-multiple-nodes-in-a-cl)
+
 [AKS Multiple Nodes](https://learn.microsoft.com/fr-fr/azure/aks/azure-files-volume)
+
 [AKS Storage](https://learn.microsoft.com/en-us/azure/aks/concepts-storage)
+
 [AKS Storage Driver](https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers)
+
 [AKS Azure file claim](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume#mount-file-share-as-an-persistent-volume)
+
 [Create PV](https://learn.microsoft.com/en-us/azure/aks/azure-files-volume)
 
 Once the Fileshare created and associated to Storage Account, we create the PV and assign it with a PVC. As it's dedicated to Redis, we added it at the end of the .yaml file.
@@ -357,6 +362,7 @@ Then apply .yaml as instructed:
 For the Horizontal Auto-scaling of Voting App, I used these turotials:
 
 [Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+
 [Autoscaling Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
 
 After thoroughly reading them, I created the following .yaml and applied to the already functionning cluster.
