@@ -64,12 +64,12 @@ _color: black
 ---
 ## 3 - Nombre de scripts
 
-Un script principal et un script de suppression des ressources présents dans les deux parties.
+Un script principal de déploiement et de services et un script de suppression des ressources, tous deux présents dans les deux parties.
 
 Plusieurs scripts pour la partie 2 afin de pouvoir tester et m'assurer que chaque manifeste fonctionne.
 Permet de  définir et d'enchaîner les étapes importantes du brief 6, mais aussi de faciliter la lisibilité et la modification des scripts.
 * Partie 1 : un script principal
-* Partie 2 : deux scripts Ingress, un script Issuer, un script principal, un script Certif, un script auto-scaling, le graph loadtester
+* Partie 2 : deux scripts Ingress, un script Issuer, un script Certif, un script auto-scaling, le graph loadtester
   
 <!--
 _backgroundColor: black
