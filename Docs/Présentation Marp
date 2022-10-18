@@ -123,9 +123,11 @@ _color: black
 ---
 ## 5 - Tâches supplentées
 
-Certaines tâches de la partie 2 du Brief 6 ont été supplentées afin de palier le manque de temps et permettre de réaliser les bonus.
+Certaines tâches de la partie 2 du Brief 6 ont été supplantées afin de palier le manque de temps et permettre de réaliser les bonus.
 * App Gateway avec Agic-on
 * Certbot
+ 
+Ce choix à été fait à la fois pour le temps gagné et du fait que ces deux outils ont été utilisés avec succès dans des briefs précédents.
 
 <!--
 _color: black
@@ -159,7 +161,7 @@ _color: black
 J'ai rencontré plusieurs difficultés :
 
 * Certaines documentations Kubernetes n'étant pas à jour et la platforme récente, beaucoup d'information fausse flottent sur internet et faire la part des choses est parfois long
-* Comprendre dans les manifests .yaml où pointe quoi (matchlabels, services, ...)
+* Comprendre dans les manifests .yaml où pointe quoi (matchLabels, services, ...)
 * Un temps de brief réduit par des interventions externes et des contre-temps
 * Des difficultés pour réaliser le DAT et l'executive summary car objectif flou
 
@@ -169,11 +171,11 @@ _color: black
 
 ---
 ## 7 - Solutions trouvées 
-Afin de palier aux difficultés, j'ai cherché des solutions, me suis remise en question et ai adopté différents comportements :
+Afin de pallier aux difficultés, j'ai cherché des solutions, me suis remise en question et ai adopté différents comportements :
 
 * Communications avec les autres membres de la formation
 * Des temps "off com" avec de l'isolement et du travail sans distraction, parfois tard le soir
-* Alliance avec Dunvael principalement pour consolider nos forces et palier à nous faiblesses.
+* Alliance avec Dunvael principalement pour consolider nos forces et palier à nos faiblesses.
 
 <!--
 _color: black
