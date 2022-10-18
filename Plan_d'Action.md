@@ -130,10 +130,12 @@ KT-temp1 <--> cluster <--> KT-temp2
 | Storage secret | ✓ | ✓ | ✓ |
 | Storage account (Standard LRS) | N/A | ✓ | ✓ |
 | Persistent Volume | N/A | ✓ | ✗ |
-| Persistent Vol. Claim (3Gi)| N/A | ✓ | ✗ |
+| Persistent Vol. Claim (3Gi) | N/A | ✓ | ✗ |
 | Ingress | ✓ | ✗ | ✓ |
-| Nginx| ✓ | ✗ | ✗ |
-| Certificat TLS | N/A | ✗ | ✓ |
+| Nginx | ✓ | ✗ | ✗ |
+| Cert-Manager | N/A | N/A | ✓ |
+| Certificat TLS | N/A | N/A | ✓ |
+| DNS | ✓ | N/A | ✓ |
 | Auto-scaling | ✗ | ✗ | ✓ (deployment) |
 
 SubcriptionID: a1f74e2d-ec58-4f9a-a112-088e3469febb
