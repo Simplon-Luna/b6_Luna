@@ -146,7 +146,7 @@ _color: black
 ---
 
 ***Ingress*** = 
-* L'Ingress (ou entrée réseau), intégré à Kubernetes, expose les routes HTTP et HTTPS de l'extérieur du cluster à des services au sein du cluster. 
+* L'Ingress (ou entrée réseau), intégré à Kubernetes, expose les routes HTTP et HTTPS de l'extérieur du cluster à des services au sein du cluster.
 * Le routage du trafic est contrôlé par des règles définies sur la ressource Ingress.
 * Un Ingress peut être configuré pour donner aux services des URLs HTTPS accessibles de l'extérieur, un load balancer et un DNS. Un contrôleur d'Ingress est responsable de l'exécution de l'Ingress.
 
@@ -158,7 +158,7 @@ _color: black
 ## 6 - Difficultés  rencontrées
 J'ai rencontré plusieurs difficultés :
 
-* Certaines documentations Kubernetes n'étant pas à jour les informations sur les pré-requis étaient difficiles à vérifier
+* Certaines documentations Kubernetes n'étant pas à jour et la platforme récente, beaucoup d'information fausse flottent sur internet et faire la part des choses est parfois long
 * Comprendre dans les manifests .yaml où pointe quoi (matchlabels, services, ...)
 * Un temps de brief réduit par des interventions externes et des contre-temps
 * Des difficultés pour réaliser le DAT et l'executive summary car objectif flou
@@ -172,7 +172,8 @@ _color: black
 Afin de palier aux difficultés, j'ai cherché des solutions, me suis remise en question et ai adopté différents comportements :
 
 * Communications avec les autres membres de la formation
-* Des temps de pause (câlins et bisous au chaton par exemple ou pause ferrero)
+* Des temps "off com" avec de l'isolement et du travail sans distraction, parfois tard le soir
+* Alliance avec Dunvael principalement pour consolider nos forces et palier à nous faiblesses.
 
 <!--
 _color: black
@@ -181,9 +182,9 @@ _color: black
 ---
 ## 8 - DAT et Executive Summary
 
-[Document d'Architecture Technique](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Docs/DAT.md)
+[Techincal Architechture Document](https://github.com/Simplon-Luna/b6_Luna/blob/main/Docs/DAT.md)
 
-[Executive summary](https://github.com/simplon-lerouxDunvael/Brief_6/blob/main/Docs/Executive_summary_Dun.pdf)
+[Executive summary](https://github.com/Simplon-Luna/b6_Luna/blob/main/Docs/Executive_summary.pdf)
 
 <!--
 _color: black
